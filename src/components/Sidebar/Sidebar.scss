@@ -1,0 +1,297 @@
+.containderSidebar {
+  height: calc(100vh - 2rem);
+  display: flex;
+  background: #33214b;
+  padding: 1rem;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  width: 50px;
+  transition: 0.3s ease-in-out;
+  color: white;
+
+  .topSidebar {
+    font-size: 1.7rem;
+    min-height: 40px;
+    display: flex;
+    align-items: baseline;
+    position: relative;
+    &__title {
+      top: 0;
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      cursor: default;
+    }
+    &__btn {
+      transition: 0.7s ease-in-out;
+      cursor: pointer;
+      z-index: 10;
+    }
+  }
+  .menuSidebar {
+    $self: &;
+    z-index: 10;
+    width: 98%;
+    &__items {
+      padding: 0;
+      list-style-type: none;
+      li {
+        margin: 1rem 0px;
+      }
+    }
+    &__search {
+      cursor: pointer;
+      background: #9f9d9d47;
+      padding: 15px;
+      border-radius: 7px;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      box-shadow: 0px 0px 1px 0px black;
+      height: 22px;
+      transition: 0.3s ease-in-out;
+      &:hover {
+        box-shadow: 0px 0px 3px 0px white;
+      }
+      svg {
+        transition: 0.3s ease-in-out;
+        cursor: pointer;
+      }
+      input {
+        display: none;
+        margin-left: 1rem;
+      }
+    }
+    &__item {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      font-size: 1.6rem;
+      background: transparent;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: 0.3s ease-in-out;
+      &:hover {
+        background: black;
+        color: cyan;
+      }
+      &:hover span {
+        position: absolute;
+        opacity: 1;
+        left: 6rem;
+        padding: 10px;
+        border-radius: 10px;
+        background: black;
+        cursor: default;
+      }
+
+      &.active {
+        background: black;
+        color: cyan;
+      }
+      svg {
+        margin-left: 1px;
+        transition: 0.3s ease-in-out;
+      }
+      span {
+        display: none;
+        position: absolute;
+        opacity: 0;
+        left: 5rem;
+        transition: 0.3s ease-in-out;
+      }
+    }
+  }
+
+  .bottomSidebar {
+    z-index: 100;
+    cursor: pointer;
+    position: absolute;
+    bottom: 5px;
+    padding: 20px;
+    border-radius: 10px;
+    background: #462d68;
+    font-size: 1.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__info {
+      display: none;
+      position: absolute;
+      opacity: 0;
+      display: flex;
+      align-items: center;
+      left: 1rem;
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+      }
+    }
+    &__infoTitle {
+      margin-left: 1rem;
+      p {
+        font-size: 1.4rem;
+        opacity: 0.7;
+      }
+    }
+
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+
+  &.active {
+    width: 300px;
+    .topSidebar {
+      $self: &;
+      display: flex;
+      width: 98%;
+      font-size: 1.7rem;
+      justify-content: space-between;
+      align-items: baseline;
+      &__title {
+        display: flex;
+        align-items: center;
+        opacity: 1;
+        position: relative;
+        animation: showTitle 0.7s ease-in-out;
+        svg {
+          margin-right: 0.5rem;
+        }
+      }
+      &__btn {
+        position: absolute;
+        cursor: pointer;
+        z-index: 10;
+        right: 0;
+        transition: 0.5s ease-in-out;
+      }
+    }
+    .menuSidebar {
+      $self: &;
+      &__search {
+        input {
+          color: white;
+          background: transparent;
+          outline: none;
+          border: 0;
+          height: 20px;
+          display: block;
+          width: 100%;
+          &::-webkit-input-placeholder {
+            color: #b3b3b3;
+            font-weight: 500;
+            font-size: 16px;
+            position: absolute;
+            bottom: 0;
+            letter-spacing: 1px;
+          }
+          &::-moz-placeholder {
+            color: #b3b3b3;
+            font-weight: 500;
+            font-size: 16px;
+            position: absolute;
+            bottom: 0;
+            letter-spacing: 1px;
+          }
+          &:-moz-placeholder {
+            color: #b3b3b3;
+            font-weight: 500;
+            font-size: 16px;
+            position: absolute;
+            bottom: 0;
+            letter-spacing: 1px;
+          }
+          &:-ms-input-placeholder {
+            color: #b3b3b3;
+            font-weight: 500;
+            font-size: 16px;
+            position: absolute;
+            bottom: 0;
+            letter-spacing: 1px;
+          }
+        }
+      }
+      &__item {
+        display: flex;
+        &:hover span {
+          position: absolute;
+          opacity: 1;
+          left: 5rem;
+          padding: 0px;
+          border-radius: 0px;
+          background: transparent;
+          cursor: pointer;
+        }
+        span {
+          display: block;
+          animation: showInfo 1s ease-in-out;
+          opacity: 1;
+        }
+      }
+    }
+
+    .bottomSidebar {
+      $self: &;
+      cursor: default;
+      position: absolute;
+      bottom: 0px;
+      width: 100%;
+      height: 100px;
+      padding: 0px;
+      border-radius: 0px;
+      background: #462d68;
+      font-size: 1.7rem;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      &__info {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        left: 1rem;
+        opacity: 1;
+        animation: showInfo 1s ease-in-out;
+        img {
+          cursor: pointer;
+          width: 50px;
+          height: 50px;
+          border-radius: 10px;
+        }
+      }
+      &__infoTitle {
+        margin-left: 1rem;
+        p {
+          font-size: 1.4rem;
+          opacity: 0.7;
+        }
+      }
+      svg {
+        cursor: pointer;
+        margin-right: 1.5rem;
+      }
+    }
+  }
+}
+
+@keyframes showTitle {
+  0% {
+    opacity: 0;
+    position: absolute;
+  }
+  100% {
+    opacity: 1;
+    position: relative;
+  }
+}
+
+@keyframes showInfo {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
